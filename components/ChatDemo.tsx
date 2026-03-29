@@ -154,7 +154,7 @@ export default function ChatDemo() {
               </div>
             )}
             <div style={{
-              maxWidth: "75%",
+              maxWidth: "85%",
               padding: "10px 14px",
               borderRadius: msg.role === "user" ? "16px 16px 4px 16px" : "16px 16px 16px 4px",
               background: msg.role === "user" ? "var(--brand-primary)" : "var(--surface-3)",
@@ -174,7 +174,7 @@ export default function ChatDemo() {
               AI
             </div>
             <div style={{
-              maxWidth: "75%",
+              maxWidth: "85%",
               padding: "10px 14px",
               borderRadius: "16px 16px 16px 4px",
               background: "var(--surface-3)",

@@ -132,7 +132,7 @@ export default function Navbar() {
           transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1)",
           display: "flex",
           flexDirection: "column",
-          padding: "80px 24px 32px",
+          padding: "72px 20px 32px",
           gap: 8,
         }}
       >
@@ -141,7 +141,7 @@ export default function Navbar() {
             key={link.href}
             href={link.href}
             onClick={() => setMenuOpen(false)}
-            style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--text-primary)", textDecoration: "none", padding: "12px 0", borderBottom: "1px solid var(--border)", fontFamily: "Roboto Condensed, sans-serif" }}
+            style={{ fontSize: "1.125rem", fontWeight: 700, color: "var(--text-primary)", textDecoration: "none", padding: "14px 0", borderBottom: "1px solid var(--border)", fontFamily: "Roboto Condensed, sans-serif" }}
           >
             {link.label}
           </Link>
@@ -160,6 +160,9 @@ export default function Navbar() {
         @media (min-width: 768px) {
           .desktop-nav { display: flex !important; }
           .desktop-cta { display: inline-flex !important; }
+        }
+        @media (max-width: 480px) {
+          .mobile-menu-cta { padding: 14px !important; font-size: 0.9375rem !important; }
         }
       `}</style>
     </>

@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <>
       {/* ======= HERO ======= */}
-      <section style={{ paddingTop: 120, paddingBottom: 80, background: "var(--surface)" }}>
+      <section className="hero-section" style={{ paddingTop: 120, paddingBottom: 80, background: "var(--surface)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 20px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 60, alignItems: "center" }} className="hero-grid">
 
@@ -120,7 +120,7 @@ export default function Home() {
       </section>
 
       {/* ======= STATS STRIP ======= */}
-      <div style={{ background: "var(--surface-2)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "32px 0" }}>
+      <div className="stats-strip" style={{ background: "var(--surface-2)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "32px 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 20px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24, textAlign: "center" }} className="stats-grid">
             {stats.map((s) => (
@@ -325,6 +325,12 @@ export default function Home() {
           .hero-grid { grid-template-columns: 1fr 1fr !important; }
           .stats-grid { grid-template-columns: repeat(4, 1fr) !important; }
           .pricing-grid { grid-template-columns: repeat(3, 1fr) !important; }
+        }
+        @media (max-width: 480px) {
+          .hero-section { padding-top: 88px !important; padding-bottom: 48px !important; }
+          .hero-grid { gap: 32px !important; }
+          .section-pad { padding: 48px 0 !important; }
+          .stats-strip { padding: 24px 0 !important; }
         }
       `}</style>
     </>
