@@ -3,9 +3,14 @@ import { posts, formatDate } from "@/lib/blog";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | AI Virtual Assistant Resources | Hirelessly",
-  description: "Guides, comparisons, and research on AI virtual assistant services, Filipino VA costs, and business automation.",
+  title: "Blog | AI Assistant Resources | Hirelessly",
+  description: "Guides, comparisons, and research on AI assistant services, Filipino VA costs, and business automation.",
   alternates: { canonical: "https://hirelessly.com/blog" },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | AI Assistant Resources | Hirelessly",
+    description: "Guides, comparisons, and research on AI assistant services, Filipino VA costs, and business automation.",
+  },
 };
 
 const pillar = posts.find((p) => p.isPillar)!;
@@ -22,7 +27,7 @@ export default function BlogIndex() {
             Resources
           </span>
           <h1 style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 12, fontFamily: "Roboto Condensed, sans-serif" }}>
-            AI Virtual Assistant Blog
+            AI Assistant Blog
           </h1>
           <p style={{ fontSize: "1.0625rem", color: "rgba(242,242,240,0.65)", maxWidth: 560 }}>
             Guides, comparisons, and insights on AI automation, virtual assistants, and the future of business operations.

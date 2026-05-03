@@ -24,8 +24,8 @@ export default function Footer() {
                 Services
               </div>
               {[
-                { label: "AI Virtual Assistant", href: "/ai-virtual-assistant" },
-                { label: "VA Philippines", href: "/ai-virtual-assistant-philippines" },
+                { label: "AI Assistant", href: "/ai-virtual-assistant" },
+                { label: "AI for Business Ops", href: "/ai-virtual-assistant-philippines" },
                 { label: "Pricing", href: "/#pricing" },
               ].map((link) => (
                 <Link

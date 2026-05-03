@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPost, getAllSlugs, posts, formatDate } from "@/lib/blog";
+import { getBlogContent } from "@/lib/blog-content";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -23,6 +24,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: post.date,
       url: `https://hirelessly.com/blog/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.seoTitle ?? post.title,
+      description: post.seoDescription ?? post.excerpt,
     },
   };
 }
@@ -110,19 +116,17 @@ export default async function BlogPost({ params }: Props) {
             </div>
           </div>
 
-          {/* Content placeholder — replace with Sanity Portable Text */}
-          <div style={{ marginTop: 40, padding: 28, background: "var(--surface-2)", border: "1px dashed var(--border)", borderRadius: 16, marginBottom: 48 }}>
-            <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--brand-primary)", marginBottom: 12 }}>
-              Content — Migrate from /hirelessly/blog/{post.slug}.html
-            </div>
-            <p style={{ fontSize: "0.9375rem", color: "rgba(242,242,240,0.5)", lineHeight: 1.7, margin: 0 }}>
-              This article&apos;s full content lives at{" "}
-              <code style={{ fontFamily: "DM Mono, monospace", fontSize: "0.875rem", color: "var(--accent)", background: "rgba(0,255,135,0.08)", padding: "2px 6px", borderRadius: 4 }}>
-                /hirelessly/blog/{post.slug}.html
-              </code>
-              . When Sanity is connected, replace this block with the Portable Text renderer.
-            </p>
-          </div>
+          {/* Article content */}
+          {(() => {
+            const content = getBlogContent(post.slug);
+            return content ? (
+              <div
+                className="blog-content"
+                dangerouslySetInnerHTML={{ __html: content }}
+                style={{ marginTop: 40, marginBottom: 48 }}
+              />
+            ) : null;
+          })()}
 
           {/* CTA */}
           <div style={{ background: "linear-gradient(135deg, rgba(239,111,46,0.12), rgba(0,255,135,0.06))", border: "1px solid var(--brand-primary)", borderRadius: 20, padding: 28, textAlign: "center", marginBottom: 48 }}>

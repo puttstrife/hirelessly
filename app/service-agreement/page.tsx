@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Master Service Agreement | Hirelessly",
-  description: "Hirelessly Master Service Agreement governing all managed AI virtual assistant services.",
+  description: "Hirelessly Master Service Agreement governing all managed AI assistant services.",
   alternates: { canonical: "https://hirelessly.com/service-agreement" },
   robots: { index: false },
 };
@@ -38,14 +38,14 @@ export default function ServiceAgreement() {
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 12, fontFamily: "Roboto Condensed, sans-serif" }}>
             Master Service Agreement
           </h1>
-          <div style={{ fontSize: "1rem", color: "rgba(255,255,255,0.6)", marginBottom: 32 }}>Managed AI Virtual Assistant Services</div>
+          <div style={{ fontSize: "1rem", color: "rgba(255,255,255,0.6)", marginBottom: 32 }}>Managed AI Assistant Services</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: "0.875rem", color: "rgba(255,255,255,0.65)" }}>
             <div><strong style={{ color: "#fff" }}>Document Version:</strong> 1.0 — March 2026</div>
-            <div><strong style={{ color: "#fff" }}>Governing Law:</strong> State of [INSERT STATE], United States</div>
-            <div><strong style={{ color: "#fff" }}>Provider:</strong> Hirelessly, Inc.</div>
+            <div><strong style={{ color: "#fff" }}>Governing Law:</strong> Kingdom of Thailand</div>
+            <div><strong style={{ color: "#fff" }}>Provider:</strong> Hirelessly Co., Ltd.</div>
           </div>
           <p style={{ marginTop: 24, fontSize: "0.75rem", color: "rgba(255,255,255,0.3)", lineHeight: 1.6 }}>
-            This agreement governs all managed AI virtual assistant services provided by Hirelessly.<br />
+            This agreement governs all managed AI assistant services provided by Hirelessly.<br />
             A signed Statement of Work (SOW) is required to activate services under this MSA.
           </p>
         </div>
@@ -55,10 +55,10 @@ export default function ServiceAgreement() {
 
         {/* Intro */}
         <p style={prose}>
-          This <strong>Master Service Agreement</strong> (&quot;Agreement&quot;) is entered into between <strong>Hirelessly, Inc.</strong> (&quot;Hirelessly,&quot; &quot;we,&quot; &quot;us&quot;) and the business entity identified in the accompanying Statement of Work (&quot;Client,&quot; &quot;you&quot;). Together, Hirelessly and Client are referred to as the &quot;Parties.&quot;
+          This <strong>Master Service Agreement</strong> (&quot;Agreement&quot;) is entered into between <strong>Hirelessly Co., Ltd.</strong> (&quot;Hirelessly,&quot; &quot;we,&quot; &quot;us&quot;) and the business entity identified in the accompanying Statement of Work (&quot;Client,&quot; &quot;you&quot;). Together, Hirelessly and Client are referred to as the &quot;Parties.&quot;
         </p>
         <p style={prose}>
-          This Agreement governs all managed AI virtual assistant services — including the deployment, operation, and management of AI agents — provided by Hirelessly to Client. Services do not begin until both Parties have executed a Statement of Work referencing this Agreement.
+          This Agreement governs all managed AI assistant services — including the deployment, operation, and management of AI agents — provided by Hirelessly to Client. Services do not begin until both Parties have executed a Statement of Work referencing this Agreement.
         </p>
         <Callout type="info">
           <strong>Plain English Summary:</strong> This contract defines what Hirelessly will do for you, what you are responsible for, how your data is handled, what AI agents are and are not authorized to do on your behalf, and what happens if something goes wrong. Read it carefully before signing.
@@ -93,7 +93,7 @@ export default function ServiceAgreement() {
                 ["Client Data", "Any data, content, or information that Client or its end-customers provide to Hirelessly or that Hirelessly accesses through Authorized Tools in connection with performing the Services."],
                 ["End-Customer", "A third party (customer, lead, partner) who interacts with Client's business and whose data may be processed by AI Agents as part of the Services."],
                 ["Confidential Information", "Any non-public business information disclosed by one Party to the other in connection with this Agreement, including pricing, workflows, credentials, and Client Data."],
-                ["Services", "The managed AI virtual assistant services described in the applicable SOW, including agent deployment, configuration, monitoring, and optimization."],
+                ["Services", "The managed AI assistant services described in the applicable SOW, including agent deployment, configuration, monitoring, and optimization."],
               ].map(([term, def]) => (
                 <tr key={term}><Td><strong>{term}</strong></Td><Td>{def}</Td></tr>
               ))}
@@ -232,9 +232,9 @@ export default function ServiceAgreement() {
           <table style={tableStyle}>
             <thead><tr><Th>Tier</Th><Th>Agent Processing Time</Th><Th>HITL Escalation Surfaced</Th><Th>Support Response</Th></tr></thead>
             <tbody>
-              <tr><Td>Starter ($29/mo)</Td><Td>Within 30 min of trigger</Td><Td>Within 2 business hours</Td><Td>Next business day</Td></tr>
-              <tr><Td>Growth ($49/mo)</Td><Td>Within 15 min of trigger</Td><Td>Within 1 business hour</Td><Td>Within 4 business hours</Td></tr>
-              <tr><Td>Scale ($99/mo)</Td><Td>Within 5 min of trigger</Td><Td>Within 30 minutes</Td><Td>Within 2 business hours</Td></tr>
+              <tr><Td>Assisted ($149/mo)</Td><Td>Within 30 min of trigger</Td><Td>Within 2 business hours</Td><Td>Next business day</Td></tr>
+              <tr><Td>Copilot ($199/mo)</Td><Td>Within 15 min of trigger</Td><Td>Within 1 business hour</Td><Td>Within 4 business hours</Td></tr>
+              <tr><Td>Autopilot ($399/mo)</Td><Td>Within 5 min of trigger</Td><Td>Within 30 minutes</Td><Td>Within 2 business hours</Td></tr>
             </tbody>
           </table>
           <p style={prose}><strong>SLA Remedy:</strong> If Hirelessly fails to meet the processing time SLA in more than 5% of trigger events in a calendar month, Client is entitled to a service credit of 10% of that month&apos;s retainer, applied to the following invoice. Service credits are the sole remedy for SLA failures.</p>
@@ -363,8 +363,8 @@ export default function ServiceAgreement() {
         {/* Section 15 */}
         <Section id="s15" num="Section 15" title="General Provisions">
           <NumberedList items={[
-            ["Governing Law.", "This Agreement is governed by the laws of the State of [INSERT STATE], without regard to conflict of law principles."],
-            ["Dispute Resolution.", "The Parties agree to attempt to resolve disputes through good-faith negotiation for 30 days before initiating any legal proceeding. Any unresolved dispute will be submitted to binding arbitration under the rules of the AAA."],
+            ["Governing Law.", "This Agreement is governed by the laws of the Kingdom of Thailand, without regard to conflict of law principles. Hirelessly Co., Ltd. is incorporated and operates from Bangkok, Thailand."],
+            ["Dispute Resolution.", "The Parties agree to attempt to resolve disputes through good-faith negotiation for 30 days before initiating any legal proceeding. Any unresolved dispute will be submitted to binding arbitration under the rules of the Thai Arbitration Center (THAC) in Bangkok, Thailand."],
             ["Entire Agreement.", "This Agreement, together with all executed SOWs, constitutes the entire agreement between the Parties."],
             ["Amendments.", "Modifications to this MSA require written agreement signed by authorized representatives of both Parties."],
             ["Severability.", "If any provision is found unenforceable, the remaining provisions continue in full force."],
@@ -380,9 +380,9 @@ export default function ServiceAgreement() {
         {/* Section 16 */}
         <Section id="s16" num="Section 16" title="Signature & Execution">
           <p style={prose}>By signing below, each Party confirms that they have read, understood, and agreed to this Master Service Agreement and that the individual signing has authority to bind the named entity.</p>
-          <p style={prose}>This Agreement may be executed electronically. An electronic signature is legally binding under the U.S. Electronic Signatures in Global and National Commerce Act (E-SIGN) and applicable state law.</p>
+          <p style={prose}>This Agreement may be executed electronically. An electronic signature is legally binding under Thailand&apos;s Electronic Transactions Act B.E. 2544 (2001) and its amendments.</p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 24, marginTop: 32 }} className="sig-grid">
-            {["Hirelessly, Inc. — Service Provider", "Client — Business Entity"].map((label) => (
+            {["Hirelessly Co., Ltd. — Service Provider", "Client — Business Entity"].map((label) => (
               <div key={label} style={{ border: "1px solid var(--border)", borderRadius: 12, padding: 24 }}>
                 <div style={{ fontSize: "0.6875rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-muted)", marginBottom: 20 }}>{label}</div>
                 {["Authorized Signature", "Printed Name & Title", "Date"].map((field) => (

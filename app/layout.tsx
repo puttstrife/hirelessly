@@ -4,18 +4,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "AI Virtual Assistant Services | Hirelessly — Systemize Your Business Operations 24/7",
-  description: "Hirelessly deploys AI systems that handle repetitive operations — emails, scheduling, CRM, support — so your business runs without the bottlenecks of manual work.",
   metadataBase: new URL("https://hirelessly.com"),
-  openGraph: {
-    title: "AI Virtual Assistant Services | Systemize Your Business Operations 24/7",
-    description: "Stop running your business on manual work. Hirelessly deploys AI systems that handle emails, scheduling, CRM, and support — 24/7, without the overhead.",
-    type: "website",
-    url: "https://hirelessly.com",
-  },
   robots: {
     index: true,
     follow: true,
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@hirelessly",
   },
 };
 

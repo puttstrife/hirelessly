@@ -25,9 +25,8 @@ export default function Navbar() {
   }, [lastY]);
 
   const navLinks = [
-    { label: "AI Virtual Assistant", href: "/ai-virtual-assistant" },
+    { label: "AI Assistant", href: "/ai-virtual-assistant" },
     { label: "Solutions", href: "/#solutions" },
-    { label: "Pricing", href: "/#pricing" },
     { label: "How It Works", href: "/#how-it-works" },
     { label: "Blog", href: "/blog" },
   ];
@@ -75,12 +74,14 @@ export default function Navbar() {
 
             {/* Desktop CTAs */}
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              {/* Pricing pill */}
               <Link
-                href="/#contact"
-                className="desktop-cta"
-                style={{ padding: "9px 16px", fontSize: "0.8125rem", fontWeight: 600, borderRadius: 8, border: "1.5px solid rgba(242,242,240,0.15)", color: "var(--text-primary)", textDecoration: "none", display: "none", transition: "border-color 0.2s" }}
+                href="/pricing"
+                className="desktop-cta pricing-pill"
+                style={{ display: "none", alignItems: "center", gap: 6, padding: "7px 14px", fontSize: "0.8125rem", fontWeight: 700, borderRadius: 100, background: "rgba(239,111,46,0.12)", border: "1.5px solid rgba(239,111,46,0.35)", color: "var(--brand-primary)", textDecoration: "none", position: "relative" }}
               >
-                Book Demo
+                ◆ Pricing
+                <span style={{ background: "var(--accent)", color: "#0a0a0a", fontSize: "0.6rem", fontWeight: 800, padding: "2px 6px", borderRadius: 100, letterSpacing: "0.04em", textTransform: "uppercase" }}>Save 10%</span>
               </Link>
               <Link
                 href="/#contact"
@@ -94,6 +95,7 @@ export default function Navbar() {
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle menu"
+                className="hamburger-btn"
                 style={{ display: "flex", flexDirection: "column", gap: 5, padding: 6, cursor: "pointer", background: "none", border: "none" }}
               >
                 {[0, 1, 2].map((i) => (
@@ -160,6 +162,7 @@ export default function Navbar() {
         @media (min-width: 768px) {
           .desktop-nav { display: flex !important; }
           .desktop-cta { display: inline-flex !important; }
+          .hamburger-btn { display: none !important; }
         }
         @media (max-width: 480px) {
           .mobile-menu-cta { padding: 14px !important; font-size: 0.9375rem !important; }
