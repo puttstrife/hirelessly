@@ -117,7 +117,10 @@ export default function AIVirtualAssistant() {
                 Fully managed AI agents that handle your business operations — without the hiring, onboarding, or management overhead.
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
-                <Link href="#how-it-works" style={{ padding: "16px 32px", fontWeight: 600, borderRadius: 20, background: "var(--brand-primary)", color: "#fff", textDecoration: "none", fontSize: "1rem" }}>
+                <Link href="/#contact" style={{ padding: "16px 32px", fontWeight: 600, borderRadius: 20, background: "var(--brand-primary)", color: "#fff", textDecoration: "none", fontSize: "1rem" }}>
+                  Get Started
+                </Link>
+                <Link href="#how-it-works" style={{ padding: "16px 32px", fontWeight: 600, borderRadius: 20, background: "transparent", border: "1.5px solid rgba(242,242,240,0.15)", color: "var(--text-primary)", textDecoration: "none", fontSize: "1rem" }}>
                   See How It Works
                 </Link>
               </div>
@@ -303,13 +306,13 @@ export default function AIVirtualAssistant() {
           <p style={{ fontSize: "1.0625rem", color: "rgba(242,242,240,0.65)", marginBottom: 32, lineHeight: 1.7 }}>
             Get a fully managed AI assistant — multiple agents, one hire, zero overhead. Starting from $149/mo.
           </p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/ai-virtual-assistant-philippines" style={{ padding: "16px 32px", fontWeight: 600, borderRadius: 20, background: "var(--brand-primary)", color: "#fff", textDecoration: "none", fontSize: "1rem" }}>
-              Get Your AI Assistant
-            </Link>
-            <Link href="/blog/what-is-ai-virtual-assistant" style={{ padding: "16px 32px", fontWeight: 600, borderRadius: 20, border: "1.5px solid rgba(242,242,240,0.15)", color: "var(--text-primary)", textDecoration: "none", fontSize: "1rem" }}>
-              Read the Full Guide →
-            </Link>
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link href="/#contact" style={{ padding: "16px 32px", fontWeight: 600, borderRadius: 20, background: "var(--brand-primary)", color: "#fff", textDecoration: "none", fontSize: "1rem" }}>
+                Get Your AI Assistant
+              </Link>
+              <Link href="/blog/what-is-ai-virtual-assistant" style={{ padding: "16px 32px", fontWeight: 600, borderRadius: 20, border: "1.5px solid rgba(242,242,240,0.15)", color: "var(--text-primary)", textDecoration: "none", fontSize: "1rem" }}>
+                Read the Full Guide →
+              </Link>
           </div>
         </div>
       </section>

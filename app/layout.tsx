@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { LeadCaptureProvider } from "@/components/LeadCapture";
+import { DemoBookingProvider } from "@/components/DemoBooking";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hirelessly.com"),
@@ -31,9 +33,13 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <LeadCaptureProvider>
+          <DemoBookingProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </DemoBookingProvider>
+        </LeadCaptureProvider>
       </body>
     </html>
   );

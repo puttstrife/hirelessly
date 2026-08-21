@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { DemoBookingButton } from "@/components/DemoBooking";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -152,9 +153,9 @@ export default function Navbar() {
           <Link href="/#contact" onClick={() => setMenuOpen(false)} style={{ padding: "16px", textAlign: "center", fontWeight: 600, borderRadius: 12, background: "var(--brand-primary)", color: "#fff", textDecoration: "none", fontSize: "1rem" }}>
             Get an AI Assistant
           </Link>
-          <Link href="/#contact" onClick={() => setMenuOpen(false)} style={{ padding: "16px", textAlign: "center", fontWeight: 600, borderRadius: 12, border: "1.5px solid rgba(242,242,240,0.15)", color: "var(--text-primary)", textDecoration: "none", fontSize: "1rem" }}>
+          <DemoBookingButton source="navbar:mobile-book-demo" onClick={() => setMenuOpen(false)} style={{ padding: "16px", textAlign: "center", fontWeight: 600, borderRadius: 12, border: "1.5px solid rgba(242,242,240,0.15)", color: "var(--text-primary)", textDecoration: "none", fontSize: "1rem" }}>
             Book a Demo
-          </Link>
+          </DemoBookingButton>
         </div>
       </div>
 

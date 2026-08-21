@@ -3,12 +3,13 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import DashboardMockup from "@/components/DashboardMockup";
 import HowItWorksSection from "@/components/HowItWorksSection";
+import { DemoBookingButton } from "@/components/DemoBooking";
 import {
   Robot, MagnifyingGlass, EnvelopeSimple, ChartBar, PaintBrush,
   House, ShoppingCart, Megaphone, Rocket, Headphones,
   CurrencyDollar, Clock, TrendUp, Users,
-  ClipboardText, ChatCircle, Gear, CalendarBlank, Target, Funnel,
-  User, X, Check, Star, Image as PhosphorImage,
+  ClipboardText, ChatCircle, Gear, CalendarBlank, Funnel,
+  User, X, Check, Star,
   HourglassSimple, LinkSimple, Warning,
 } from "@phosphor-icons/react/dist/ssr";
 
@@ -179,8 +180,12 @@ export default function HomePage() {
               </p>
 
               <div className="hero-ctas" style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 32 }}>
-                <Link href="/#contact" className="btn-hero" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", padding: "16px 32px", background: "var(--brand-primary)", color: "#fff", borderRadius: 20, fontSize: "1rem", fontWeight: 700, textDecoration: "none" }}>Get Your AI Assistant</Link>
-                <Link href="/#contact" className="btn-hero" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", padding: "16px 32px", background: "transparent", color: "var(--text-primary)", borderRadius: 20, fontSize: "1rem", fontWeight: 700, textDecoration: "none", border: "1.5px solid var(--border)" }}>Book a Demo</Link>
+                <Link href="/#contact" className="btn-hero" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", padding: "16px 32px", background: "var(--brand-primary)", color: "#fff", borderRadius: 20, fontSize: "1rem", fontWeight: 700, textDecoration: "none" }}>
+                  Get Your AI Assistant
+                </Link>
+                <DemoBookingButton source="homepage:hero-book-demo" className="btn-hero" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", padding: "16px 32px", background: "transparent", color: "var(--text-primary)", borderRadius: 20, fontSize: "1rem", fontWeight: 700, textDecoration: "none", border: "1.5px solid var(--border)" }}>
+                  Book a Demo
+                </DemoBookingButton>
               </div>
 
               <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: "0.8125rem", color: "var(--text-muted)" }}>
@@ -221,7 +226,7 @@ export default function HomePage() {
             <div>
               <SL>The Problem</SL>
               <h2 style={{ marginBottom: 12 }}>Your Business Has a Workflow Execution Problem</h2>
-              <p style={{ marginBottom: 24, lineHeight: 1.7 }}>Most businesses don't have a hiring problem. They have a system problem — work still needs to get done, but the way it gets done is manual, inconsistent, and impossible to scale.</p>
+              <p style={{ marginBottom: 24, lineHeight: 1.7 }}>Most businesses don&apos;t have a hiring problem. They have a system problem — work still needs to get done, but the way it gets done is manual, inconsistent, and impossible to scale.</p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="problem-cards-grid">
                 {[
                   { icon: <HourglassSimple size={18} weight="duotone" />, text: "Work only happens when someone is available", sub: "Tasks slow down outside working hours — and stop entirely on weekends" },
@@ -452,7 +457,7 @@ export default function HomePage() {
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <SL>Industries</SL>
             <h2 style={{ marginBottom: 12 }}>AI Assistants for Different Industries</h2>
-            <p style={{ color: "var(--text-muted)", maxWidth: 600, margin: "0 auto", lineHeight: 1.7 }}>Whether you're a startup, agency, or enterprise team — Hirelessly scales to fit your operations.</p>
+            <p style={{ color: "var(--text-muted)", maxWidth: 600, margin: "0 auto", lineHeight: 1.7 }}>Whether you&apos;re a startup, agency, or enterprise team — Hirelessly scales to fit your operations.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="industries-grid">
             {INDUSTRIES.map(ind => (
@@ -472,7 +477,7 @@ export default function HomePage() {
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <SL>The Business Case</SL>
             <h2 style={{ marginBottom: 12 }}>What Changes When You Run on Systems</h2>
-            <p style={{ color: "var(--text-muted)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>This isn't just about cutting costs. It's about building an operation that executes consistently, scales without friction, and stops depending on individuals to function.</p>
+            <p style={{ color: "var(--text-muted)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>This isn&apos;t just about cutting costs. It&apos;s about building an operation that executes consistently, scales without friction, and stops depending on individuals to function.</p>
           </div>
           <div style={{ display: "grid", gap: 16 }} className="benefits-grid">
             {BENEFITS.map(b => (
@@ -528,7 +533,7 @@ export default function HomePage() {
             })}
           </div>
           <p style={{ textAlign: "center", fontSize: "0.875rem", color: "var(--text-muted)" }}>
-            Don't see your tool? We support any platform with a REST API or webhook. <Link href="/#contact" style={{ color: "var(--brand-primary)" }}>Ask us about your stack →</Link>
+            Don&apos;t see your tool? We support any platform with a REST API or webhook. <Link href="/#contact" style={{ color: "var(--brand-primary)" }}>Ask us about your stack →</Link>
           </p>
         </div>
       </section>
@@ -564,7 +569,7 @@ export default function HomePage() {
             <div>
               <SL>Get Started</SL>
               <h2 style={{ marginBottom: 12, color: "#fff" }}>Ready to stop running on manual work?</h2>
-              <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 16 }}>Tell us about your business and we'll follow up within 1 business day with a recommended plan and next steps.</p>
+              <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 16 }}>Tell us about your business and we&apos;ll follow up within 1 business day with a recommended plan and next steps.</p>
               <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.4)" }}>No long-term contracts · Deploy in 5–7 days · Cancel anytime after month 3</p>
             </div>
             <ContactForm />

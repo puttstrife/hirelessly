@@ -2,12 +2,9 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { LeadCaptureButton } from "@/components/LeadCapture";
 
 const ANNUAL_DISCOUNT = 0.10;
-
-// Buffer: agentic pipelines (n8n, multi-step agents) can spike 2-5x token consumption
-// per task unpredictably. 25% is baked into action limits so you never run short.
-const AGENTIC_BUFFER = 0.25;
 
 const PLANS = [
   {
@@ -174,12 +171,15 @@ function PricingCard({ plan, annual }: { plan: typeof PLANS[0]; annual: boolean 
       </div>
 
       {/* CTA */}
-      <Link
-        href="/#contact"
+      <LeadCaptureButton
+        planName={`${plan.name}${annual ? " (Annual)" : ""}`}
+        monthly={Math.round(totalMonthly)}
+        setup={plan.setupFee}
+        source={`pricing-page:${plan.id}`}
         style={{ display: "block", textAlign: "center", padding: "14px", fontWeight: 700, borderRadius: 12, background: plan.ctaColor, border: plan.ctaBorder || "none", color: plan.ctaText, textDecoration: "none", fontSize: "0.9375rem", transition: "opacity 0.2s" }}
       >
         Get Started
-      </Link>
+      </LeadCaptureButton>
 
       {/* Features */}
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>

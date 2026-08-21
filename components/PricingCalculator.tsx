@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LeadCaptureButton } from "@/components/LeadCapture";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -74,6 +75,15 @@ function calcPrice(state: CalcState) {
 // ─── Sub-components ──────────────────────────────────────────────────────────
 
 const mono: React.CSSProperties = { fontFamily: "DM Mono, monospace" };
+
+function SummaryRow({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
+  return (
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 0", borderBottom: "1px solid var(--border)" }}>
+      <span style={{ fontSize: "0.9375rem", color: "rgba(242,242,240,0.65)" }}>{label}</span>
+      <span style={{ ...mono, fontSize: "0.9375rem", fontWeight: 700, color: accent ? "var(--accent)" : "var(--text-primary)" }}>{value}</span>
+    </div>
+  );
+}
 
 function StepIndicator({ step, total }: { step: number; total: number }) {
   return (
@@ -307,13 +317,6 @@ function Step5({ state }: { state: CalcState }) {
   const support = SUPPORT_LEVELS.find((s) => s.id === state.support)!;
   const volume = VOLUME_LEVELS.find((v) => v.id === state.volume)!;
 
-  const Row = ({ label, value, accent }: { label: string; value: string; accent?: boolean }) => (
-    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 0", borderBottom: "1px solid var(--border)" }}>
-      <span style={{ fontSize: "0.9375rem", color: "rgba(242,242,240,0.65)" }}>{label}</span>
-      <span style={{ ...mono, fontSize: "0.9375rem", fontWeight: 700, color: accent ? "var(--accent)" : "var(--text-primary)" }}>{value}</span>
-    </div>
-  );
-
   return (
     <>
       <SectionTitle label="Step 5 — Summary" title="Your Custom Plan" />
@@ -321,20 +324,20 @@ function Step5({ state }: { state: CalcState }) {
         {/* Breakdown */}
         <div style={{ background: "var(--surface-2)", border: "1px solid var(--border)", borderRadius: 20, padding: 28 }}>
           <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-muted)", marginBottom: 16 }}>Plan Breakdown</div>
-          <Row label="Base plan (VA + Email agents)" value="$149/mo" />
+          <SummaryRow label="Base plan (VA + Email agents)" value="$149/mo" />
           {selectedAgents.length > 0 && (
-            <Row label={`Add-on agents (${selectedAgents.map((a) => a.label).join(", ")})`} value={`+$${price.agentsCost}/mo`} />
+            <SummaryRow label={`Add-on agents (${selectedAgents.map((a) => a.label).join(", ")})`} value={`+$${price.agentsCost}/mo`} />
           )}
           {price.volumeAdj > 0 && (
-            <Row label={`Volume adjustment (${volume.label} ×${volume.multiplier})`} value={`+$${price.volumeAdj}/mo`} />
+            <SummaryRow label={`Volume adjustment (${volume.label} ×${volume.multiplier})`} value={`+$${price.volumeAdj}/mo`} />
           )}
           {advancedIntegrations.length > 0 && (
-            <Row label={`Advanced integrations (${advancedIntegrations.join(", ")})`} value={`+$${price.integrationsCost}/mo`} />
+            <SummaryRow label={`Advanced integrations (${advancedIntegrations.join(", ")})`} value={`+$${price.integrationsCost}/mo`} />
           )}
           {price.supportCost > 0 && (
-            <Row label={support.label} value={`+$${price.supportCost}/mo`} />
+            <SummaryRow label={support.label} value={`+$${price.supportCost}/mo`} />
           )}
-          <Row label="Agentic buffer (25%) — covers multi-step reasoning spikes" value={`+$${price.agenticBuffer}/mo`} accent />
+          <SummaryRow label="Agentic buffer (25%) — covers multi-step reasoning spikes" value={`+$${price.agenticBuffer}/mo`} accent />
           {/* Total */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 16, marginTop: 4 }}>
             <span style={{ fontWeight: 800, fontSize: "1.0625rem", fontFamily: "Roboto Condensed, sans-serif" }}>Monthly Total</span>
@@ -350,12 +353,15 @@ function Step5({ state }: { state: CalcState }) {
         <div style={{ background: "linear-gradient(135deg, rgba(239,111,46,0.1), rgba(0,255,135,0.05))", border: "1px solid var(--brand-primary)", borderRadius: 20, padding: 28, textAlign: "center" }}>
           <div style={{ ...mono, fontSize: "2rem", fontWeight: 700, color: "var(--accent)", marginBottom: 4 }}>${price.total}/mo</div>
           <div style={{ fontSize: "0.875rem", color: "rgba(242,242,240,0.5)", marginBottom: 24 }}>+ $299 one-time setup fee</div>
-          <a
-            href="/#contact"
-            style={{ display: "block", padding: "16px 32px", background: "var(--brand-primary)", color: "#fff", fontWeight: 700, borderRadius: 16, fontSize: "1rem", textDecoration: "none", marginBottom: 12 }}
+          <LeadCaptureButton
+            planName="Custom Calculator Plan"
+            monthly={price.total}
+            setup={299}
+            source="pricing-calculator"
+            style={{ display: "block", width: "100%", padding: "16px 32px", background: "var(--brand-primary)", color: "#fff", fontWeight: 700, borderRadius: 16, fontSize: "1rem", textDecoration: "none", marginBottom: 12, border: "none" }}
           >
             Get Started — Go Live in 5–7 Days
-          </a>
+          </LeadCaptureButton>
           <p style={{ fontSize: "0.8125rem", color: "rgba(242,242,240,0.4)", margin: 0 }}>
             No long-term contracts. Cancel anytime after month 3.
           </p>

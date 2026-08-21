@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
+import { LeadCaptureButton } from "@/components/LeadCapture";
 
 const TIERS = [
   {
@@ -223,8 +223,11 @@ export default function PricingSection() {
                 ))}
               </ul>
 
-              <Link
-                href="/#contact"
+              <LeadCaptureButton
+                planName={tier.name}
+                monthly={getPrice(tier.monthly)}
+                setup={Number(tier.setup.replace(/[^0-9]/g, ""))}
+                source={`pricing-section:${tier.name.toLowerCase()}`}
                 style={{
                   display: "block",
                   textAlign: "center",
@@ -238,7 +241,7 @@ export default function PricingSection() {
                   border: tier.ctaStyle === "primary" ? "none" : "1.5px solid var(--border)",
                   marginBottom: 12,
                 }}
-              >{tier.cta}</Link>
+              >{tier.cta}</LeadCaptureButton>
 
               <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", paddingTop: 12, borderTop: "1px solid var(--border)", lineHeight: 1.5, fontStyle: "italic" }}>{tier.vaCompare}</div>
             </div>
@@ -254,12 +257,12 @@ export default function PricingSection() {
             </div>
             <div style={{ flex: 1, minWidth: 220 }}>
               <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.08em", color: "var(--text-muted)", marginBottom: 6 }}>Fair use policy</div>
-              <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Your monthly plan includes the actions above at no extra cost. If you exceed your limit, overage is billed at the per-action rate shown — never automatically charged without notice. We'll alert you at 80% usage so there are no surprises.</p>
+              <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Your monthly plan includes the actions above at no extra cost. If you exceed your limit, overage is billed at the per-action rate shown — never automatically charged without notice. We&apos;ll alert you at 80% usage so there are no surprises.</p>
             </div>
             <div style={{ flex: 1, minWidth: 220, display: "flex", flexDirection: "column" as const, justifyContent: "center", gap: 10 }}>
               <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.08em", color: "var(--text-muted)" }}>Not sure which plan fits?</div>
-              <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Answer 5 quick questions about your business and we'll tell you exactly which plan and how many actions you'll need.</p>
-              <Link href="/#contact" style={{ display: "inline-flex", alignItems: "center", padding: "9px 16px", background: "var(--brand-primary)", color: "#fff", borderRadius: 8, fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none", alignSelf: "flex-start" }}>Find My Plan →</Link>
+              <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Answer 5 quick questions about your business and we&apos;ll tell you exactly which plan and how many actions you&apos;ll need.</p>
+              <LeadCaptureButton planName="Assisted" monthly={149} setup={499} source="pricing-section:find-my-plan" style={{ display: "inline-flex", alignItems: "center", padding: "9px 16px", background: "var(--brand-primary)", color: "#fff", borderRadius: 8, fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none", alignSelf: "flex-start", border: "none" }}>Find My Plan →</LeadCaptureButton>
             </div>
           </div>
         </div>
@@ -272,7 +275,7 @@ export default function PricingSection() {
               <div style={{ fontSize: "1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Done-With-You AI Transformation</div>
               <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", margin: 0 }}>Full deployment + workshops so your team understands and owns your automation stack.</p>
             </div>
-            <Link href="/#contact" style={{ padding: "10px 24px", background: "var(--brand-primary)", color: "#fff", borderRadius: 8, fontWeight: 600, fontSize: "0.875rem", textDecoration: "none", flexShrink: 0 }}>Notify Me</Link>
+            <LeadCaptureButton planName="Starter" monthly={0} setup={299} source="pricing-section:notify-me" style={{ padding: "10px 24px", background: "var(--brand-primary)", color: "#fff", borderRadius: 8, fontWeight: 600, fontSize: "0.875rem", textDecoration: "none", flexShrink: 0, border: "none" }}>Notify Me</LeadCaptureButton>
           </div>
         </div>
 
@@ -295,9 +298,9 @@ export default function PricingSection() {
                 <div style={{ fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em", color: "var(--text-primary)", lineHeight: 1 }}>$299 <span style={{ fontSize: "0.9375rem", fontWeight: 500, color: "var(--text-muted)" }}>one-time</span></div>
                 <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)", marginTop: 4 }}>No monthly fee. Yours to keep.</div>
               </div>
-              <Link href="/#contact" style={{ padding: "12px 24px", background: "var(--brand-primary)", color: "#fff", borderRadius: 12, fontWeight: 600, fontSize: "0.875rem", textDecoration: "none", flexShrink: 0, alignSelf: "flex-start" }}>
+              <LeadCaptureButton planName="Starter" monthly={0} setup={299} source="pricing-section:get-the-starter" style={{ padding: "12px 24px", background: "var(--brand-primary)", color: "#fff", borderRadius: 12, fontWeight: 600, fontSize: "0.875rem", textDecoration: "none", flexShrink: 0, alignSelf: "flex-start", border: "none" }}>
                 Get the Starter →
-              </Link>
+              </LeadCaptureButton>
             </div>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column" as const, gap: 8 }}>
               {["1 AI agent built and deployed", "Gmail or Outlook + Google Calendar connected", "Basic automation via n8n or Make", "You review before anything goes out", "Upgrade to a subscription plan at any time"].map(f => (

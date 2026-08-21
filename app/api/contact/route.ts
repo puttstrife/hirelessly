@@ -33,8 +33,14 @@ export async function POST(req: NextRequest) {
     const email         = sanitize(body.email);
     const business_type = sanitize(body.business_type);
     const bottleneck    = sanitize(body.bottleneck);
+    const monthlyRaw    = sanitize(body.monthly);
+    const setupRaw      = sanitize(body.setup);
+    const planSelected  = sanitize(body.plan_selected);
+    const source        = sanitize(body.source) || "website";
+    const monthly       = monthlyRaw ? Number(monthlyRaw) : undefined;
+    const setup         = setupRaw ? Number(setupRaw) : undefined;
 
-    if (!name || !email) {
+    if (!name || !email || !business_type || !bottleneck) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
     if (!EMAIL_RE.test(email)) {
@@ -46,6 +52,9 @@ export async function POST(req: NextRequest) {
 
     const errors: string[] = [];
     let delivered = false;
+    const submittedAt = new Date();
+    const submittedStamp = submittedAt.toISOString();
+    const submittedLabel = submittedAt.toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
 
     // ── Airtable ──────────────────────────────────────────────────────────
     if (AIRTABLE_BASE_ID && AIRTABLE_API_KEY) {
@@ -62,9 +71,12 @@ export async function POST(req: NextRequest) {
               Name: name,
               Email: email,
               "Business Type": business_type,
-              "Bottle Neck": bottleneck,
-              Source: "hirelessly.com",
-              "Submitted At": new Date().toISOString().split("T")[0],
+              Bottleneck: bottleneck,
+              "Monthly Budget": Number.isFinite(monthly as number) ? monthly : null,
+              "Setup Budget": Number.isFinite(setup as number) ? setup : null,
+              "Plan Selected": planSelected || null,
+              Source: source,
+              "Submitted At": submittedStamp,
             },
           }),
         }
@@ -83,11 +95,15 @@ export async function POST(req: NextRequest) {
       const sEmail = esc(email);
       const sBiz = esc(business_type) || "—";
       const sBot = esc(bottleneck) || "—";
+      const sPlan = esc(planSelected) || "—";
+      const sSource = esc(source) || "—";
+      const sMonthly = Number.isFinite(monthly as number) ? `$${Number(monthly).toLocaleString()}` : "—";
+      const sSetup = Number.isFinite(setup as number) ? `$${Number(setup).toLocaleString()}` : "—";
 
       const { error } = await resend.emails.send({
         from: "Hirelessly Leads <onboarding@resend.dev>",
         to: [NOTIFY_EMAIL],
-        subject: `New lead: ${sName} — ${sBiz}`,
+        subject: `New lead: ${sName} — ${sBiz}${planSelected ? ` (${sPlan})` : ""}`,
         html: `
           <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:24px;background:#1A1410;color:#F2F2F0;border-radius:12px">
             <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#EF6F2E;margin-bottom:12px">Hirelessly — New Lead</div>
@@ -96,7 +112,11 @@ export async function POST(req: NextRequest) {
               <tr><td style="padding:8px 0;font-size:12px;color:#8A8480;width:120px">Email</td><td style="padding:8px 0;font-size:13px"><a href="mailto:${sEmail}" style="color:#EF6F2E">${sEmail}</a></td></tr>
               <tr><td style="padding:8px 0;font-size:12px;color:#8A8480">Business Type</td><td style="padding:8px 0;font-size:13px">${sBiz}</td></tr>
               <tr><td style="padding:8px 0;font-size:12px;color:#8A8480">Bottleneck</td><td style="padding:8px 0;font-size:13px">${sBot}</td></tr>
-              <tr><td style="padding:8px 0;font-size:12px;color:#8A8480">Submitted</td><td style="padding:8px 0;font-size:13px">${new Date().toLocaleString("en-US", { timeZone: "Asia/Bangkok" })} BKK</td></tr>
+              <tr><td style="padding:8px 0;font-size:12px;color:#8A8480">Plan Selected</td><td style="padding:8px 0;font-size:13px">${sPlan}</td></tr>
+              <tr><td style="padding:8px 0;font-size:12px;color:#8A8480">Monthly Budget</td><td style="padding:8px 0;font-size:13px">${sMonthly}</td></tr>
+              <tr><td style="padding:8px 0;font-size:12px;color:#8A8480">Setup Budget</td><td style="padding:8px 0;font-size:13px">${sSetup}</td></tr>
+              <tr><td style="padding:8px 0;font-size:12px;color:#8A8480">Source</td><td style="padding:8px 0;font-size:13px">${sSource}</td></tr>
+              <tr><td style="padding:8px 0;font-size:12px;color:#8A8480">Submitted</td><td style="padding:8px 0;font-size:13px">${submittedLabel} BKK</td></tr>
             </table>
             <div style="margin-top:24px;padding-top:16px;border-top:1px solid #3A3430;font-size:11px;color:#555">hirelessly.com · Bangkok, Thailand</div>
           </div>

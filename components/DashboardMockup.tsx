@@ -39,8 +39,16 @@ export default function DashboardMockup() {
     obs.observe(el);
     // If already in viewport on mount (hero), fire immediately
     const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight) { setTriggered(true); obs.disconnect(); }
-    return () => obs.disconnect();
+    const timeout = rect.top < window.innerHeight
+      ? window.setTimeout(() => {
+          setTriggered(true);
+          obs.disconnect();
+        }, 0)
+      : undefined;
+    return () => {
+      if (timeout !== undefined) window.clearTimeout(timeout);
+      obs.disconnect();
+    };
   }, []);
 
   const tasks  = useCountUp(2847, 1400, triggered);

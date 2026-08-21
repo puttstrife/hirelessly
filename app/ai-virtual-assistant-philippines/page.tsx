@@ -88,7 +88,7 @@ export default function AIVirtualAssistantPhilippines() {
               Replace Manual Ops with AI
             </h1>
             <p style={{ fontSize: "1.125rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.7, marginBottom: 12, maxWidth: 620 }}>
-              Your business shouldn't stop when a person goes offline. Hirelessly deploys AI systems that handle operations{" "}
+              Your business shouldn&apos;t stop when a person goes offline. Hirelessly deploys AI systems that handle operations{" "}
               <strong style={{ color: "var(--text-primary)" }}>24/7</strong> — at a fraction of the cost of running it manually.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 32, marginBottom: 20 }}>

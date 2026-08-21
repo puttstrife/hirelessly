@@ -1,26 +1,47 @@
 "use client";
+
 import { useState } from "react";
 
-const inputStyle = { padding: "12px 16px", borderRadius: 10, border: "1.5px solid rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.06)", color: "#fff", fontSize: "0.9375rem", fontFamily: "inherit", outline: "none", width: "100%", boxSizing: "border-box" as const };
+const inputStyle = {
+  padding: "12px 16px",
+  borderRadius: 10,
+  border: "1.5px solid rgba(255,255,255,0.15)",
+  background: "rgba(255,255,255,0.06)",
+  color: "#fff",
+  fontSize: "0.9375rem",
+  fontFamily: "inherit",
+  outline: "none",
+  width: "100%",
+  boxSizing: "border-box" as const,
+};
 const selectStyle = { ...inputStyle, background: "rgba(30,25,20,0.95)" };
 const labelStyle = { fontSize: "0.8125rem", fontWeight: 600, color: "rgba(255,255,255,0.7)" };
 const errStyle = { fontSize: "0.75rem", color: "#FF6B6B", marginTop: 2 };
-
 // Letters (incl. Unicode accents/ñ/é), spaces, hyphens, apostrophes, periods only
-const NAME_RE  = /^[\p{L}\p{M}'\-.\s]+$/u;
+const NAME_RE = /^[\p{L}\p{M}'\-.\s]+$/u;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function ContactForm() {
-  const [submitted, setSubmitted]         = useState(false);
-  const [loading, setLoading]             = useState(false);
-  const [businessType, setBusinessType]   = useState("");
+type ContactFormProps = {
+  planName?: string;
+  monthlyBudget?: number;
+  setupBudget?: number;
+  source?: string;
+};
+
+export default function ContactForm({ planName, monthlyBudget, setupBudget, source }: ContactFormProps) {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [businessType, setBusinessType] = useState("");
   const [otherBusiness, setOtherBusiness] = useState("");
-  const [nameError, setNameError]         = useState("");
-  const [emailError, setEmailError]       = useState("");
-  const [submitError, setSubmitError]     = useState("");
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
   const validateName = (val: string) => {
-    if (!val) { setNameError(""); return true; }
+    if (!val) {
+      setNameError("");
+      return true;
+    }
     const ok = NAME_RE.test(val);
     setNameError(ok ? "" : "Name cannot contain special characters.");
     return ok;
@@ -28,7 +49,10 @@ export default function ContactForm() {
 
   // Only validate on blur — no error while actively typing
   const validateEmailOnBlur = (val: string) => {
-    if (!val) { setEmailError(""); return; }
+    if (!val) {
+      setEmailError("");
+      return;
+    }
     setEmailError(EMAIL_RE.test(val) ? "" : "Enter a valid email address");
   };
 
@@ -37,7 +61,7 @@ export default function ContactForm() {
     const fd = new FormData(e.currentTarget);
     const payload = Object.fromEntries(fd.entries()) as Record<string, string>;
 
-    const nameOk  = validateName(payload.name);
+    const nameOk = validateName(payload.name);
     const emailOk = EMAIL_RE.test(payload.email);
     if (!emailOk) setEmailError("Enter a valid email address");
     if (!nameOk || !emailOk) return;
@@ -45,6 +69,11 @@ export default function ContactForm() {
     if (payload.business_type === "other" && otherBusiness.trim()) {
       payload.business_type = otherBusiness.trim();
     }
+
+    if (typeof monthlyBudget === "number") payload.monthly = String(monthlyBudget);
+    if (typeof setupBudget === "number") payload.setup = String(setupBudget);
+    if (planName) payload.plan_selected = planName;
+    payload.source = source ?? payload.source ?? "website";
 
     setLoading(true);
     setSubmitError("");
@@ -69,8 +98,12 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div style={{ textAlign: "center", padding: "32px 0" }}>
-        <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fff", marginBottom: 12, letterSpacing: "-0.02em" }} className="contact-msg">You're on the list.</div>
-        <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: 380, margin: "0 auto" }} className="contact-sub">We'll review your details and reach out within 1 business day with a plan built around your workflow.</p>
+        <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fff", marginBottom: 12, letterSpacing: "-0.02em" }} className="contact-msg">
+          You&apos;re on the list.
+        </div>
+        <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: 380, margin: "0 auto" }} className="contact-sub">
+          We&apos;ll review your details and reach out within 1 business day with a plan built around your workflow.
+        </p>
         <style>{`
           @keyframes fade-up {
             from { opacity: 0; transform: translateY(12px); }
@@ -123,7 +156,9 @@ export default function ContactForm() {
           onChange={(e) => setBusinessType(e.target.value)}
           style={selectStyle}
         >
-          <option value="" disabled>Select your industry</option>
+          <option value="" disabled>
+            Select your industry
+          </option>
           <option value="ecommerce">E-commerce</option>
           <option value="saas">SaaS / Software</option>
           <option value="agency">Agency / Consulting</option>
@@ -145,9 +180,11 @@ export default function ContactForm() {
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        <label style={labelStyle}>What's your biggest operational bottleneck?</label>
+        <label style={labelStyle}>What&apos;s your biggest operational bottleneck?</label>
         <select name="bottleneck" required style={selectStyle}>
-          <option value="" disabled>Pick the one that hurts most</option>
+          <option value="" disabled>
+            Pick the one that hurts most
+          </option>
           <option value="email">Email — too much to manage manually</option>
           <option value="leads">Lead follow-ups — they fall through the cracks</option>
           <option value="scheduling">Scheduling — back-and-forth is killing time</option>
@@ -157,7 +194,30 @@ export default function ContactForm() {
         </select>
       </div>
 
-      <button type="submit" className="contact-btn" disabled={loading} style={{ padding: "16px", background: "var(--text-primary)", color: "var(--surface)", borderRadius: 14, fontWeight: 700, fontSize: "1rem", fontFamily: "inherit", cursor: loading ? "default" : "pointer", border: "none", marginTop: 4, opacity: loading ? 0.7 : 1, transition: "opacity 0.2s" }}>
+      <input type="hidden" name="monthly" value={typeof monthlyBudget === "number" ? String(monthlyBudget) : ""} />
+      <input type="hidden" name="setup" value={typeof setupBudget === "number" ? String(setupBudget) : ""} />
+      <input type="hidden" name="plan_selected" value={planName ?? ""} />
+      <input type="hidden" name="source" value={source ?? "website"} />
+
+      <button
+        type="submit"
+        className="contact-btn"
+        disabled={loading}
+        style={{
+          padding: "16px",
+          background: "var(--text-primary)",
+          color: "var(--surface)",
+          borderRadius: 14,
+          fontWeight: 700,
+          fontSize: "1rem",
+          fontFamily: "inherit",
+          cursor: loading ? "default" : "pointer",
+          border: "none",
+          marginTop: 4,
+          opacity: loading ? 0.7 : 1,
+          transition: "opacity 0.2s",
+        }}
+      >
         {loading ? "Sending…" : "Get My Automation Plan"}
       </button>
       {submitError && <div style={{ fontSize: "0.8125rem", color: "#FF6B6B", lineHeight: 1.5 }}>{submitError}</div>}
