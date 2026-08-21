@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
 const AIRTABLE_TABLE  = "tblZhP4GkOGCWYxhf";
@@ -90,7 +88,9 @@ export async function POST(req: NextRequest) {
     }
 
     // ── Resend ────────────────────────────────────────────────────────────
-    if (process.env.RESEND_API_KEY) {
+    const resendApiKey = process.env.RESEND_API_KEY;
+    if (resendApiKey) {
+      const resend = new Resend(resendApiKey);
       const sName = esc(name);
       const sEmail = esc(email);
       const sBiz = esc(business_type) || "—";
