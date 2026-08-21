@@ -18,12 +18,18 @@ function useCountUp(target: number, duration = 1400, triggered = false) {
   return value;
 }
 
-const ACTIVITY = [
-  { color: "#00D4AA", text: "Replied to 8 customer inquiries",  badge: "Done", badgeBg: "rgba(0,212,170,0.15)",   badgeColor: "#00FF87" },
-  { color: "#5B5FEF", text: "Scheduled 3 sales calls",          badge: "Live", badgeBg: "rgba(91,95,239,0.2)",    badgeColor: "#8B8FFF" },
-  { color: "#FFB74D", text: "Updated CRM with 12 leads",        badge: "AI",   badgeBg: "rgba(255,183,77,0.15)",  badgeColor: "#FFB74D" },
-  { color: "#00D4AA", text: "Generated weekly report",          badge: "Done", badgeBg: "rgba(0,212,170,0.15)",   badgeColor: "#00FF87" },
+const LEDGER = [
+  { text: "Replied to inbound customer inquiries", badge: "Done" },
+  { text: "Scheduled sales calls from new leads", badge: "Live" },
+  { text: "Updated CRM records after each call", badge: "AI" },
+  { text: "Generated the weekly ops summary", badge: "Done" },
 ];
+
+const BADGE_STYLE: Record<string, { bg: string; color: string }> = {
+  Done: { bg: "rgba(15,143,104,0.12)", color: "var(--signal)" },
+  Live: { bg: "rgba(43,71,214,0.12)", color: "var(--cobalt-ink)" },
+  AI: { bg: "rgba(97,82,206,0.12)", color: "var(--iris)" },
+};
 
 export default function DashboardMockup() {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,10 +57,10 @@ export default function DashboardMockup() {
     };
   }, []);
 
-  const tasks  = useCountUp(2847, 1400, triggered);
-  const hours  = useCountUp(312,  1200, triggered);
-  const emails = useCountUp(1204, 1500, triggered);
-  const saved  = useCountUp(1200, 1300, triggered);
+  const tasks  = useCountUp(28, 1400, triggered);
+  const hours  = useCountUp(31, 1200, triggered);
+  const emails = useCountUp(120, 1500, triggered);
+  const saved  = useCountUp(62, 1300, triggered);
 
   const fmt = (n: number) => n.toLocaleString();
 
@@ -65,7 +71,7 @@ export default function DashboardMockup() {
         background: "var(--surface)",
         borderRadius: 24,
         border: "1px solid var(--border)",
-        boxShadow: "0 20px 60px rgba(0,0,0,0.40)",
+        boxShadow: "0 24px 64px -32px rgba(18,23,44,0.35)",
         overflow: "hidden",
         opacity: triggered ? 1 : 0,
         transform: triggered ? "translateY(0)" : "translateY(24px)",
@@ -73,70 +79,72 @@ export default function DashboardMockup() {
         width: "100%",
       }}
     >
-      <div style={{ background: "#1A1B2E", padding: 16, borderRadius: 24 }}>
+      <div aria-hidden style={{ height: 3, background: "var(--horizon)" }} />
+      <div style={{ padding: 20 }}>
 
-        {/* Window chrome */}
-        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 16 }}>
-          {["#FF5F57", "#FEBC2E", "#28C840"].map(c => (
-            <span key={c} style={{ width: 10, height: 10, borderRadius: "50%", background: c, display: "block" }} />
-          ))}
-          <span style={{ fontSize: "0.75rem", color: "#6B7280", marginLeft: 8, fontFamily: "DM Mono, monospace" }}>
-            hirelessly / ai-assistant-dashboard
+        {/* Chrome */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18, gap: 12, flexWrap: "wrap" }}>
+          <span style={{ fontSize: "0.75rem", color: "var(--ink-muted)", fontFamily: "'DM Mono', monospace" }}>
+            operations-ledger.log
+          </span>
+          <span style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--ink-muted)", border: "1px solid var(--border-strong)", borderRadius: 100, padding: "3px 10px" }}>
+            Illustrative example
           </span>
         </div>
 
         {/* Stat cards */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 12 }}>
           {[
-            { label: "Tasks Automated", value: fmt(tasks),  suffix: "",    delta: "↑ 24% this week" },
-            { label: "Hours Saved",     value: fmt(hours),  suffix: "h",   delta: "↑ this month" },
-            { label: "Emails Handled",  value: fmt(emails), suffix: "",    delta: "↑ automated" },
-            { label: "Cost Saved",      value: saved >= 1000 ? `$${(saved / 1000).toFixed(1)}k` : `$${saved}`, suffix: "", delta: "↑ vs traditional ops" },
+            { label: "Tasks Automated", value: fmt(tasks),  suffix: "" },
+            { label: "Hours Reclaimed",  value: fmt(hours),  suffix: "h" },
+            { label: "Emails Handled",  value: fmt(emails), suffix: "" },
+            { label: "Ops Cost Cut",    value: `${saved}`, suffix: "%" },
           ].map((card, i) => (
             <div
               key={card.label}
               style={{
-                background: "#252742",
-                borderRadius: 8,
+                background: "var(--surface-2)",
+                borderRadius: 12,
                 padding: 14,
                 opacity: triggered ? 1 : 0,
                 transform: triggered ? "translateY(0)" : "translateY(12px)",
                 transition: `opacity 0.5s ease ${0.1 + i * 0.08}s, transform 0.5s ease ${0.1 + i * 0.08}s`,
               }}
             >
-              <div style={{ fontSize: "0.6875rem", color: "#6B7280", marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.06em" }}>{card.label}</div>
-              <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#fff" }}>{card.value}{card.suffix}</div>
-              <div style={{ fontSize: "0.6875rem", color: "var(--accent)", marginTop: 2 }}>{card.delta}</div>
+              <div style={{ fontSize: "0.6875rem", color: "var(--ink-muted)", marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.06em" }}>{card.label}</div>
+              <div className="tabular-nums" style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--ink)" }}>{card.value}{card.suffix}</div>
             </div>
           ))}
         </div>
 
-        {/* Activity feed */}
-        <div style={{ background: "#252742", borderRadius: 8, padding: 12 }}>
-          <div style={{ fontSize: "0.6875rem", color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>
-            Live AI Activity
+        {/* Ledger */}
+        <div style={{ background: "var(--surface-2)", borderRadius: 12, padding: 12 }}>
+          <div style={{ fontSize: "0.6875rem", color: "var(--ink-muted)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>
+            Sample activity
           </div>
-          {ACTIVITY.map((row, i) => (
-            <div
-              key={row.text}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "6px 0",
-                borderBottom: i < ACTIVITY.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
-                opacity: triggered ? 1 : 0,
-                transform: triggered ? "translateX(0)" : "translateX(-10px)",
-                transition: `opacity 0.4s ease ${0.5 + i * 0.1}s, transform 0.4s ease ${0.5 + i * 0.1}s`,
-              }}
-            >
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: row.color, flexShrink: 0, display: "inline-block" }} />
-              <span style={{ fontSize: "0.75rem", color: "#CBD5E1", flex: 1 }}>{row.text}</span>
-              <span style={{ fontSize: "0.625rem", padding: "2px 8px", borderRadius: 100, fontWeight: 600, background: row.badgeBg, color: row.badgeColor }}>
-                {row.badge}
-              </span>
-            </div>
-          ))}
+          {LEDGER.map((row, i) => {
+            const badge = BADGE_STYLE[row.badge];
+            return (
+              <div
+                key={row.text}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "8px 0",
+                  borderBottom: i < LEDGER.length - 1 ? "1px solid var(--border)" : "none",
+                  opacity: triggered ? 1 : 0,
+                  transform: triggered ? "translateX(0)" : "translateX(-10px)",
+                  transition: `opacity 0.4s ease ${0.5 + i * 0.1}s, transform 0.4s ease ${0.5 + i * 0.1}s`,
+                }}
+              >
+                <span style={{ fontSize: "0.8125rem", color: "var(--ink)", flex: 1 }}>{row.text}</span>
+                <span style={{ fontSize: "0.625rem", padding: "2px 8px", borderRadius: 100, fontWeight: 700, background: badge.bg, color: badge.color }}>
+                  {row.badge}
+                </span>
+              </div>
+            );
+          })}
         </div>
 
       </div>

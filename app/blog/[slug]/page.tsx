@@ -104,7 +104,7 @@ export default async function BlogPost({ params }: Props) {
             <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 16, fontFamily: "Roboto Condensed, sans-serif" }}>
               {post.title}
             </h1>
-            <p style={{ fontSize: "1.0625rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.7, marginBottom: 20 }}>
+            <p style={{ fontSize: "1.0625rem", color: "var(--ink-muted)", lineHeight: 1.7, marginBottom: 20 }}>
               {post.excerpt}
             </p>
             <div style={{ display: "flex", gap: 12, alignItems: "center", fontSize: "0.8125rem", color: "var(--text-muted)", paddingBottom: 24, borderBottom: "1px solid var(--border)" }}>
@@ -133,7 +133,7 @@ export default async function BlogPost({ params }: Props) {
             <h3 style={{ fontSize: "1.375rem", fontWeight: 800, letterSpacing: "-0.015em", marginBottom: 10, fontFamily: "Roboto Condensed, sans-serif" }}>
               Ready to automate your business operations?
             </h3>
-            <p style={{ fontSize: "0.9375rem", color: "rgba(242,242,240,0.65)", marginBottom: 20, lineHeight: 1.6 }}>
+            <p style={{ fontSize: "0.9375rem", color: "var(--ink-muted)", marginBottom: 20, lineHeight: 1.6 }}>
               Hirelessly deploys AI assistants in 5–7 days. No long-term contracts.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -172,7 +172,7 @@ export default async function BlogPost({ params }: Props) {
                     <h4 style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: 6, lineHeight: 1.35, fontFamily: "Roboto Condensed, sans-serif" }}>
                       {p.title}
                     </h4>
-                    <p style={{ fontSize: "0.8125rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.6, margin: 0 }}>
+                    <p style={{ fontSize: "0.8125rem", color: "var(--ink-muted)", lineHeight: 1.6, margin: 0 }}>
                       {p.excerpt}
                     </p>
                   </Link>

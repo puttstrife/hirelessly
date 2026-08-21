@@ -294,7 +294,7 @@ function initialState(payload?: DemoPayload): DemoState {
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      <span style={{ fontSize: "0.8125rem", fontWeight: 600, color: "rgba(255,255,255,0.72)" }}>{label}</span>
+      <span style={{ fontSize: "0.8125rem", fontWeight: 600, color: "var(--ink-muted)" }}>{label}</span>
       {children}
     </label>
   );
@@ -316,12 +316,12 @@ function WizardHeading({ step, total, title, desc }: { step: number; total: numb
             }}
           />
         ))}
-        <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", marginLeft: 4 }}>
+        <span style={{ fontSize: "0.8125rem", color: "var(--ink-muted)", marginLeft: 4 }}>
           Step {step} of {total}
         </span>
       </div>
       <h3 style={{ fontSize: "clamp(1.3rem, 2.5vw, 1.8rem)", marginBottom: 8 }}>{title}</h3>
-      <p style={{ margin: 0, color: "rgba(242,242,240,0.65)", lineHeight: 1.6 }}>{desc}</p>
+      <p style={{ margin: 0, color: "var(--ink-muted)", lineHeight: 1.6 }}>{desc}</p>
     </div>
   );
 }
@@ -345,9 +345,9 @@ function ButtonChip({
         minHeight: 44,
         padding: "10px 14px",
         borderRadius: 999,
-        border: `1.5px solid ${active ? "var(--brand-primary)" : "var(--border)"}`,
-        background: active ? "rgba(239,111,46,0.12)" : "var(--surface-2)",
-        color: active ? "#fff" : "var(--text-primary)",
+        border: `1.5px solid ${active ? "var(--cobalt)" : "var(--border-strong)"}`,
+        background: active ? "var(--cobalt)" : "var(--surface)",
+        color: active ? "#fff" : "var(--ink)",
         fontWeight: 600,
         cursor: "pointer",
         display: "inline-flex",
@@ -438,9 +438,9 @@ function DemoBookingCalendar({
         style={{
           ...dayBoxStyle,
           cursor: isSelectable ? "pointer" : "not-allowed",
-          color: isSelected ? "#fff" : isSelectable ? "var(--text-primary)" : "rgba(255,255,255,0.25)",
-          background: isSelected ? "var(--brand-primary)" : isSelectable ? "var(--surface-2)" : "rgba(255,255,255,0.02)",
-          border: isSelected ? "1px solid var(--brand-primary)" : "1px solid var(--border)",
+          color: isSelected ? "#fff" : isSelectable ? "var(--ink)" : "var(--ink-faint)",
+          background: isSelected ? "var(--cobalt)" : isSelectable ? "var(--surface)" : "var(--surface-2)",
+          border: isSelected ? "1px solid var(--cobalt)" : "1px solid var(--border)",
           opacity: isSelectable ? 1 : 0.45,
         }}
       >
@@ -506,8 +506,8 @@ function DemoBookingCalendar({
                       style={{
                         minHeight: 44,
                         borderRadius: 999,
-                        border: active ? "1.5px solid var(--brand-primary)" : "1.5px solid var(--border)",
-                        background: active ? "rgba(239,111,46,0.12)" : "var(--surface)",
+                        border: active ? "1.5px solid var(--cobalt)" : "1.5px solid var(--border)",
+                        background: active ? "rgba(43,71,214,0.10)" : "var(--surface)",
                         color: "var(--text-primary)",
                         padding: "10px 14px",
                         cursor: "pointer",
@@ -534,7 +534,7 @@ function DemoBookingCalendar({
           ))}
         </div>
 
-        <div style={{ marginTop: 16, padding: 14, borderRadius: 16, background: "rgba(255,255,255,0.04)", border: "1px solid var(--border)" }}>
+        <div style={{ marginTop: 16, padding: 14, borderRadius: 16, background: "var(--surface)", border: "1px solid var(--border)" }}>
           <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-muted)", marginBottom: 6 }}>
             Booking summary
           </div>
@@ -640,7 +640,7 @@ function DemoModal() {
         position: "fixed",
         inset: 0,
         zIndex: 210,
-        background: "rgba(9,7,6,0.72)",
+        background: "rgba(18,23,44,0.6)",
         backdropFilter: "blur(10px)",
         display: "flex",
         alignItems: "center",
@@ -655,10 +655,10 @@ function DemoModal() {
           width: "min(100%, 920px)",
           maxHeight: "92vh",
           overflowY: "auto",
-          background: "linear-gradient(180deg, #221C17 0%, #1A1410 100%)",
+          background: "var(--surface)",
           border: "1px solid var(--border)",
           borderRadius: 24,
-          boxShadow: "0 24px 80px rgba(0,0,0,0.55)",
+          boxShadow: "0 24px 80px -24px rgba(18,23,44,0.45)",
           padding: 24,
         }}
       >
@@ -671,7 +671,7 @@ function DemoModal() {
               <h2 id="demo-booking-title" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", marginBottom: 8 }}>
                 Prep the demo, then pick a time
               </h2>
-              <p style={{ margin: 0, color: "rgba(242,242,240,0.65)", lineHeight: 1.6 }}>
+              <p style={{ margin: 0, color: "var(--ink-muted)", lineHeight: 1.6 }}>
                 We capture the call context first so the calendar invite goes out with useful notes attached.
               </p>
             </div>
@@ -688,9 +688,9 @@ function DemoModal() {
               marginBottom: 16,
               padding: "12px 14px",
               borderRadius: 14,
-              background: "rgba(255,107,107,0.12)",
-              border: "1px solid rgba(255,107,107,0.35)",
-              color: "#FFD1D1",
+              background: "var(--danger-bg)",
+              border: "1px solid var(--danger)",
+              color: "var(--danger)",
               fontSize: "0.9rem",
             }}
           >
@@ -852,7 +852,7 @@ function DemoModal() {
                       minHeight: 122,
                       borderRadius: 20,
                       border: active ? "1.5px solid var(--brand-primary)" : "1.5px solid var(--border)",
-                      background: active ? "rgba(239,111,46,0.12)" : "var(--surface-2)",
+                      background: active ? "rgba(43,71,214,0.10)" : "var(--surface)",
                       color: "var(--text-primary)",
                       padding: 18,
                       cursor: "pointer",
@@ -864,7 +864,7 @@ function DemoModal() {
                       textAlign: "left",
                     }}
                   >
-                    <div style={{ width: 40, height: 40, borderRadius: 12, background: active ? "rgba(239,111,46,0.18)" : "rgba(255,255,255,0.04)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 12, background: active ? "rgba(43,71,214,0.16)" : "var(--surface-2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       {iconForUrgency(item.option)}
                     </div>
                     <div style={{ width: "100%" }}>
@@ -944,11 +944,11 @@ function DemoModal() {
 
         {state.step === 7 && (
           <div style={{ textAlign: "center", padding: "20px 0 8px" }}>
-            <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fff", marginBottom: 10 }}>You&apos;re booked.</div>
-            <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 10 }}>
+            <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--ink)", marginBottom: 10 }}>You&apos;re booked.</div>
+            <p style={{ color: "var(--ink-muted)", lineHeight: 1.7, marginBottom: 10 }}>
               We&apos;ve captured your prep details and reserved {formatLongDate(state.selectedDate)} at {state.selectedTime} ({selectedLocal}).
             </p>
-            <p style={{ color: "rgba(255,255,255,0.45)", margin: 0 }}>We&apos;ll send the calendar invite and confirmation to {state.email}.</p>
+            <p style={{ color: "var(--ink-faint)", margin: 0 }}>We&apos;ll send the calendar invite and confirmation to {state.email}.</p>
           </div>
         )}
       </div>
@@ -1030,9 +1030,9 @@ export function DemoBookingButton({
 const inputStyle: CSSProperties = {
   padding: "12px 16px",
   borderRadius: 12,
-  border: "1.5px solid rgba(255,255,255,0.15)",
-  background: "rgba(255,255,255,0.06)",
-  color: "#fff",
+  border: "1.5px solid var(--border-strong)",
+  background: "var(--surface)",
+  color: "var(--ink)",
   fontSize: "0.9375rem",
   fontFamily: "inherit",
   outline: "none",
@@ -1055,7 +1055,7 @@ const secondaryButtonStyle: CSSProperties = {
   minHeight: 44,
   padding: "12px 18px",
   borderRadius: 14,
-  border: "1.5px solid rgba(242,242,240,0.15)",
+  border: "1.5px solid var(--border-strong)",
   background: "transparent",
   color: "var(--text-primary)",
   fontWeight: 700,

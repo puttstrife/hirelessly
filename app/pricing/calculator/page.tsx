@@ -21,7 +21,7 @@ export default function CalculatorPage() {
         <h1 style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1, fontFamily: "Roboto Condensed, sans-serif", marginBottom: 16 }}>
           Custom AI Assistant Pricing
         </h1>
-        <p style={{ fontSize: "1rem", color: "rgba(242,242,240,0.6)", lineHeight: 1.7, maxWidth: 480, margin: "0 auto" }}>
+        <p style={{ fontSize: "1rem", color: "var(--ink-muted)", lineHeight: 1.7, maxWidth: 480, margin: "0 auto" }}>
           Pick exactly the agents, integrations, and support level you need — see your price update in real time.
         </p>
       </div>

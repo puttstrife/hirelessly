@@ -5,18 +5,18 @@ import { useState } from "react";
 const inputStyle = {
   padding: "12px 16px",
   borderRadius: 10,
-  border: "1.5px solid rgba(255,255,255,0.15)",
-  background: "rgba(255,255,255,0.06)",
-  color: "#fff",
+  border: "1.5px solid var(--border-strong)",
+  background: "var(--surface)",
+  color: "var(--ink)",
   fontSize: "0.9375rem",
   fontFamily: "inherit",
   outline: "none",
   width: "100%",
   boxSizing: "border-box" as const,
 };
-const selectStyle = { ...inputStyle, background: "rgba(30,25,20,0.95)" };
-const labelStyle = { fontSize: "0.8125rem", fontWeight: 600, color: "rgba(255,255,255,0.7)" };
-const errStyle = { fontSize: "0.75rem", color: "#FF6B6B", marginTop: 2 };
+const selectStyle = { ...inputStyle };
+const labelStyle = { fontSize: "0.8125rem", fontWeight: 600, color: "var(--ink-muted)" };
+const errStyle = { fontSize: "0.75rem", color: "var(--danger)", marginTop: 2 };
 // Letters (incl. Unicode accents/ñ/é), spaces, hyphens, apostrophes, periods only
 const NAME_RE = /^[\p{L}\p{M}'\-.\s]+$/u;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -98,10 +98,10 @@ export default function ContactForm({ planName, monthlyBudget, setupBudget, sour
   if (submitted) {
     return (
       <div style={{ textAlign: "center", padding: "32px 0" }}>
-        <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fff", marginBottom: 12, letterSpacing: "-0.02em" }} className="contact-msg">
+        <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--ink)", marginBottom: 12, letterSpacing: "-0.02em" }} className="contact-msg">
           You&apos;re on the list.
         </div>
-        <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: 380, margin: "0 auto" }} className="contact-sub">
+        <p style={{ fontSize: "0.9375rem", color: "var(--ink-muted)", lineHeight: 1.7, maxWidth: 380, margin: "0 auto" }} className="contact-sub">
           We&apos;ll review your details and reach out within 1 business day with a plan built around your workflow.
         </p>
         <style>{`
@@ -126,7 +126,7 @@ export default function ContactForm({ planName, monthlyBudget, setupBudget, sour
             name="name"
             placeholder="Alex Rivera"
             required
-            style={{ ...inputStyle, borderColor: nameError ? "#FF6B6B" : "rgba(255,255,255,0.15)" }}
+            style={{ ...inputStyle, borderColor: nameError ? "var(--danger)" : "var(--border-strong)" }}
             onBlur={(e) => validateName(e.target.value)}
             onChange={() => nameError && setNameError("")}
           />
@@ -139,7 +139,7 @@ export default function ContactForm({ planName, monthlyBudget, setupBudget, sour
             name="email"
             placeholder="alex@company.com"
             required
-            style={{ ...inputStyle, borderColor: emailError ? "#FF6B6B" : "rgba(255,255,255,0.15)" }}
+            style={{ ...inputStyle, borderColor: emailError ? "var(--danger)" : "var(--border-strong)" }}
             onBlur={(e) => validateEmailOnBlur(e.target.value)}
             onChange={() => emailError && setEmailError("")}
           />
@@ -205,8 +205,8 @@ export default function ContactForm({ planName, monthlyBudget, setupBudget, sour
         disabled={loading}
         style={{
           padding: "16px",
-          background: "var(--text-primary)",
-          color: "var(--surface)",
+          background: "var(--ink)",
+          color: "var(--paper)",
           borderRadius: 14,
           fontWeight: 700,
           fontSize: "1rem",
@@ -220,12 +220,12 @@ export default function ContactForm({ planName, monthlyBudget, setupBudget, sour
       >
         {loading ? "Sending…" : "Get My Automation Plan"}
       </button>
-      {submitError && <div style={{ fontSize: "0.8125rem", color: "#FF6B6B", lineHeight: 1.5 }}>{submitError}</div>}
+      {submitError && <div style={{ fontSize: "0.8125rem", color: "var(--danger)", lineHeight: 1.5 }}>{submitError}</div>}
       <style>{`
         .form-row { grid-template-columns: 1fr; }
         @media (min-width: 480px) { .form-row { grid-template-columns: 1fr 1fr; } }
         .contact-btn { transition: background 0.2s, transform 0.15s, box-shadow 0.2s; }
-        .contact-btn:hover { background: var(--brand-primary) !important; color: #fff !important; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(239,111,46,0.35); }
+        .contact-btn:hover { background: var(--cobalt) !important; color: #fff !important; transform: translateY(-2px); box-shadow: 0 12px 28px -12px rgba(43,71,214,0.55); }
         .contact-btn:active { transform: translateY(0); box-shadow: none; }
       `}</style>
     </form>

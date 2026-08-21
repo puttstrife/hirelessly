@@ -87,7 +87,7 @@ export default function AIVirtualAssistantPhilippines() {
             <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16, fontFamily: "Roboto Condensed, sans-serif" }}>
               Replace Manual Ops with AI
             </h1>
-            <p style={{ fontSize: "1.125rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.7, marginBottom: 12, maxWidth: 620 }}>
+            <p style={{ fontSize: "1.125rem", color: "var(--ink-muted)", lineHeight: 1.7, marginBottom: 12, maxWidth: 620 }}>
               Your business shouldn&apos;t stop when a person goes offline. Hirelessly deploys AI systems that handle operations{" "}
               <strong style={{ color: "var(--text-primary)" }}>24/7</strong> — at a fraction of the cost of running it manually.
             </p>
@@ -116,7 +116,7 @@ export default function AIVirtualAssistantPhilippines() {
             <h2 style={{ fontSize: "clamp(1.625rem, 3vw, 2.25rem)", fontWeight: 700, letterSpacing: "-0.015em", fontFamily: "Roboto Condensed, sans-serif", marginBottom: 12 }}>
               Traditional Hire / Manual Ops vs AI — Real Numbers
             </h2>
-            <p style={{ fontSize: "1.0625rem", color: "rgba(242,242,240,0.65)", maxWidth: 520, margin: "0 auto" }}>
+            <p style={{ fontSize: "1.0625rem", color: "var(--ink-muted)", maxWidth: 520, margin: "0 auto" }}>
               The salary is just the start. Factor in onboarding, management time, and replacement costs.
             </p>
           </div>
@@ -164,7 +164,7 @@ export default function AIVirtualAssistantPhilippines() {
                 </div>
                 <div style={{ padding: "16px 20px", display: "flex", flexDirection: "column", gap: 10 }}>
                   {cat.items.map((item) => (
-                    <div key={item} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: "0.875rem", color: "rgba(242,242,240,0.65)" }}>
+                    <div key={item} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: "0.875rem", color: "var(--ink-muted)" }}>
                       <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--brand-primary)", flexShrink: 0, display: "block" }} />
                       {item}
                     </div>
@@ -191,7 +191,7 @@ export default function AIVirtualAssistantPhilippines() {
             {faqs.map((faq) => (
               <div key={faq.q} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 16, padding: 24 }}>
                 <div style={{ fontWeight: 700, color: "var(--text-primary)", marginBottom: 10, fontFamily: "Roboto Condensed, sans-serif", fontSize: "1rem" }}>{faq.q}</div>
-                <div style={{ fontSize: "0.9375rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.7 }}>{faq.a}</div>
+                <div style={{ fontSize: "0.9375rem", color: "var(--ink-muted)", lineHeight: 1.7 }}>{faq.a}</div>
               </div>
             ))}
           </div>
@@ -204,7 +204,7 @@ export default function AIVirtualAssistantPhilippines() {
           <h2 style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 16, fontFamily: "Roboto Condensed, sans-serif" }}>
             Stop running operations manually.
           </h2>
-          <p style={{ fontSize: "1.0625rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ fontSize: "1.0625rem", color: "var(--ink-muted)", lineHeight: 1.7, marginBottom: 32 }}>
             Get your AI operations system live in 5–7 days. Flat monthly rate. No management required.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>

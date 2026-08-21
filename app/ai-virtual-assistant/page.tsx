@@ -113,7 +113,7 @@ export default function AIVirtualAssistant() {
               <p style={{ fontSize: "1.375rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: 16, fontFamily: "Roboto Condensed, sans-serif" }}>
                 One AI System. A Whole Team&apos;s Worth of Output.
               </p>
-              <p style={{ fontSize: "1.0625rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.7, marginBottom: 32, maxWidth: 580 }}>
+              <p style={{ fontSize: "1.0625rem", color: "var(--ink-muted)", lineHeight: 1.7, marginBottom: 32, maxWidth: 580 }}>
                 Fully managed AI agents that handle your business operations — without the hiring, onboarding, or management overhead.
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
@@ -182,7 +182,7 @@ export default function AIVirtualAssistant() {
             <h2 style={{ fontSize: "clamp(1.625rem, 3vw, 2.25rem)", fontWeight: 700, letterSpacing: "-0.015em", marginBottom: 12, fontFamily: "Roboto Condensed, sans-serif" }}>
               Not one AI trying to do everything.
             </h2>
-            <p style={{ fontSize: "1.0625rem", color: "rgba(242,242,240,0.65)", maxWidth: 560, margin: "0 auto" }}>
+            <p style={{ fontSize: "1.0625rem", color: "var(--ink-muted)", maxWidth: 560, margin: "0 auto" }}>
               A team of agents, each doing one thing perfectly. Each specialist runs in parallel — nothing waits in a queue.
             </p>
           </div>
@@ -195,7 +195,7 @@ export default function AIVirtualAssistant() {
                 </div>
                 <div>
                   <div style={{ fontWeight: 700, color: "var(--text-primary)", fontSize: "1.0625rem", marginBottom: 6, fontFamily: "Roboto Condensed, sans-serif" }}>{agent.name}</div>
-                  <div style={{ fontSize: "0.9rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.65 }}>{agent.desc}</div>
+                  <div style={{ fontSize: "0.9rem", color: "var(--ink-muted)", lineHeight: 1.65 }}>{agent.desc}</div>
                 </div>
               </div>
             ))}
@@ -239,7 +239,7 @@ export default function AIVirtualAssistant() {
                 <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--brand-primary)", fontFamily: "Roboto Condensed, sans-serif", opacity: 0.5, flexShrink: 0, lineHeight: 1, minWidth: 36 }}>{step.num}</div>
                 <div>
                   <div style={{ fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, fontSize: "1rem", fontFamily: "Roboto Condensed, sans-serif" }}>{step.title}</div>
-                  <div style={{ fontSize: "0.9rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.65 }}>{step.desc}</div>
+                  <div style={{ fontSize: "0.9rem", color: "var(--ink-muted)", lineHeight: 1.65 }}>{step.desc}</div>
                 </div>
               </div>
             ))}
@@ -290,7 +290,7 @@ export default function AIVirtualAssistant() {
             {faqs.map((faq) => (
               <div key={faq.q} style={{ background: "var(--surface-2)", border: "1px solid var(--border)", borderRadius: 16, padding: 24 }}>
                 <div style={{ fontWeight: 700, color: "var(--text-primary)", marginBottom: 10, fontFamily: "Roboto Condensed, sans-serif", fontSize: "1rem" }}>{faq.q}</div>
-                <div style={{ fontSize: "0.9375rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.7 }}>{faq.a}</div>
+                <div style={{ fontSize: "0.9375rem", color: "var(--ink-muted)", lineHeight: 1.7 }}>{faq.a}</div>
               </div>
             ))}
           </div>
@@ -303,7 +303,7 @@ export default function AIVirtualAssistant() {
           <h2 style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 16, fontFamily: "Roboto Condensed, sans-serif" }}>
             Ready to stop managing tasks and start running your business?
           </h2>
-          <p style={{ fontSize: "1.0625rem", color: "rgba(242,242,240,0.65)", marginBottom: 32, lineHeight: 1.7 }}>
+          <p style={{ fontSize: "1.0625rem", color: "var(--ink-muted)", marginBottom: 32, lineHeight: 1.7 }}>
             Get a fully managed AI assistant — multiple agents, one hire, zero overhead. Starting from $149/mo.
           </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>

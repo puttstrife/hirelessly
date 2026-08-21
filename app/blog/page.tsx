@@ -29,7 +29,7 @@ export default function BlogIndex() {
           <h1 style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 12, fontFamily: "Roboto Condensed, sans-serif" }}>
             AI Assistant Blog
           </h1>
-          <p style={{ fontSize: "1.0625rem", color: "rgba(242,242,240,0.65)", maxWidth: 560 }}>
+          <p style={{ fontSize: "1.0625rem", color: "var(--ink-muted)", maxWidth: 560 }}>
             Guides, comparisons, and insights on AI automation, virtual assistants, and the future of business operations.
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function BlogIndex() {
               <h2 style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.015em", marginBottom: 12, fontFamily: "Roboto Condensed, sans-serif" }}>
                 {pillar.title}
               </h2>
-              <p style={{ fontSize: "1rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.7, marginBottom: 16 }}>
+              <p style={{ fontSize: "1rem", color: "var(--ink-muted)", lineHeight: 1.7, marginBottom: 16 }}>
                 {pillar.excerpt}
               </p>
               <div style={{ display: "flex", gap: 8, fontSize: "0.75rem", color: "var(--text-muted)" }}>
@@ -108,7 +108,7 @@ export default function BlogIndex() {
               <h2 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.01em", marginBottom: 8, lineHeight: 1.35, fontFamily: "Roboto Condensed, sans-serif" }}>
                 {post.title}
               </h2>
-              <p style={{ fontSize: "0.875rem", color: "rgba(242,242,240,0.65)", lineHeight: 1.6, marginBottom: 12 }}>
+              <p style={{ fontSize: "0.875rem", color: "var(--ink-muted)", lineHeight: 1.6, marginBottom: 12 }}>
                 {post.excerpt}
               </p>
               <div style={{ display: "flex", gap: 8, fontSize: "0.75rem", color: "var(--text-muted)" }}>

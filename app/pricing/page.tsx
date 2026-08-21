@@ -213,7 +213,7 @@ export default function PricingPage() {
         <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1, fontFamily: "Roboto Condensed, sans-serif", marginBottom: 16 }}>
           AI Virtual Assistant Pricing
         </h1>
-        <p style={{ fontSize: "1.0625rem", color: "rgba(242,242,240,0.6)", lineHeight: 1.7, maxWidth: 520, margin: "0 auto 32px" }}>
+        <p style={{ fontSize: "1.0625rem", color: "var(--ink-muted)", lineHeight: 1.7, maxWidth: 520, margin: "0 auto 32px" }}>
           Pick your plan, adjust your volume, see your price — instantly. No calls required.
         </p>
 

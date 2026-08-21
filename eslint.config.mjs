@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Impeccable is locally installed tooling, not application source.
+    ".agents/**",
+    ".impeccable/**",
+    ".codex/**",
   ]),
 ]);
 

@@ -417,7 +417,7 @@ export default function ServiceAgreement() {
 
 const prose: React.CSSProperties = {
   fontSize: "0.9375rem",
-  color: "rgba(242,242,240,0.75)",
+  color: "var(--ink-muted)",
   lineHeight: 1.8,
   marginBottom: 16,
 };
@@ -457,7 +457,7 @@ function Th({ children }: { children: React.ReactNode }) {
 
 function Td({ children }: { children: React.ReactNode }) {
   return (
-    <td style={{ padding: "10px 14px", border: "1px solid var(--border)", color: "rgba(242,242,240,0.65)", verticalAlign: "top", fontSize: "0.875rem" }}>
+    <td style={{ padding: "10px 14px", border: "1px solid var(--border)", color: "var(--ink-muted)", verticalAlign: "top", fontSize: "0.875rem" }}>
       {children}
     </td>
   );
@@ -480,7 +480,7 @@ function Callout({ type, children, style }: { type: "info" | "warning" | "danger
     danger: { bg: "rgba(255,75,75,0.06)", border: "#FF4B4B" },
   };
   return (
-    <div style={{ background: colors[type].bg, borderLeft: `3px solid ${colors[type].border}`, borderRadius: "0 8px 8px 0", padding: "14px 16px", margin: "16px 0", fontSize: "0.9rem", lineHeight: 1.65, color: "rgba(242,242,240,0.75)", ...style }}>
+    <div style={{ background: colors[type].bg, borderLeft: `3px solid ${colors[type].border}`, borderRadius: "0 8px 8px 0", padding: "14px 16px", margin: "16px 0", fontSize: "0.9rem", lineHeight: 1.65, color: "var(--ink-muted)", ...style }}>
       {children}
     </div>
   );
@@ -490,7 +490,7 @@ function Bullets({ items }: { items: string[] }) {
   return (
     <ul style={{ listStyle: "none", padding: 0, margin: "12px 0 16px", display: "flex", flexDirection: "column", gap: 8 }}>
       {items.map((item, i) => (
-        <li key={i} style={{ display: "flex", gap: 10, fontSize: "0.9rem", color: "rgba(242,242,240,0.7)", lineHeight: 1.65 }}>
+        <li key={i} style={{ display: "flex", gap: 10, fontSize: "0.9rem", color: "var(--ink-muted)", lineHeight: 1.65 }}>
           <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--brand-primary)", flexShrink: 0, marginTop: 7, display: "block" }} />
           {item}
         </li>
@@ -503,7 +503,7 @@ function NumberedList({ items }: { items: [string, string][] }) {
   return (
     <ol style={{ listStyle: "none", padding: 0, margin: "12px 0 16px", display: "flex", flexDirection: "column", gap: 10, counterReset: "list" }}>
       {items.map(([bold, text], i) => (
-        <li key={i} style={{ display: "flex", gap: 10, fontSize: "0.9rem", color: "rgba(242,242,240,0.7)", lineHeight: 1.65 }}>
+        <li key={i} style={{ display: "flex", gap: 10, fontSize: "0.9rem", color: "var(--ink-muted)", lineHeight: 1.65 }}>
           <span style={{ flexShrink: 0, fontWeight: 700, color: "var(--brand-primary)", minWidth: 20 }}>{i + 1}.</span>
           <span>{bold && <strong style={{ color: "var(--text-primary)" }}>{bold} </strong>}{text}</span>
         </li>

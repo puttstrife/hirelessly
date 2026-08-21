@@ -40,3 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# Local Impeccable runtime, review captures, and browser profiles
+.agents/
+.codex/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/review/
