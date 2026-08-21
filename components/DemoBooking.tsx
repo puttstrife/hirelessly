@@ -662,18 +662,20 @@ function DemoModal() {
           padding: 24,
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-start", marginBottom: 20 }}>
-          <div>
-            <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--brand-primary)", marginBottom: 8 }}>
-              Book a Demo
+        <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: state.step === 7 ? 0 : 20 }}>
+          {state.step !== 7 && (
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--brand-primary)", marginBottom: 8 }}>
+                Book a Demo
+              </div>
+              <h2 id="demo-booking-title" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", marginBottom: 8 }}>
+                Prep the demo, then pick a time
+              </h2>
+              <p style={{ margin: 0, color: "rgba(242,242,240,0.65)", lineHeight: 1.6 }}>
+                We capture the call context first so the calendar invite goes out with useful notes attached.
+              </p>
             </div>
-            <h2 id="demo-booking-title" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", marginBottom: 8 }}>
-              Prep the demo, then pick a time
-            </h2>
-            <p style={{ margin: 0, color: "rgba(242,242,240,0.65)", lineHeight: 1.6 }}>
-              We capture the call context first so the calendar invite goes out with useful notes attached.
-            </p>
-          </div>
+          )}
           <button type="button" onClick={close} aria-label="Close modal" style={{ ...BUTTON_RESET, color: "var(--text-muted)", fontSize: "1.25rem", lineHeight: 1 }}>
             ×
           </button>
