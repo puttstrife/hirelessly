@@ -151,44 +151,6 @@ export async function POST(req: NextRequest) {
     const submittedLabel = submittedAt.toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
     const notesWithOtherTool = [notes, otherTool ? `Other tool: ${otherTool}` : ""].filter(Boolean).join("\n");
 
-    if (!AIRTABLE_BASE_ID || !AIRTABLE_API_KEY) {
-      return NextResponse.json({ error: "Airtable is not configured" }, { status: 503 });
-    }
-
-    const createRes = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fields: {
-          Name: name,
-          "Work Email": email,
-          "Business Type": businessType,
-          Bottleneck: bottleneck,
-          "Demo Focus": focus || null,
-          "Priority Workflow": bottleneck || null,
-          "Current Tools": tools.length ? tools : null,
-          Urgency: urgency || null,
-          "Decision Makers": attendees || null,
-          "Success Criteria": successCriteria || null,
-          "Additional Notes": notesWithOtherTool || null,
-          Source: source,
-          Status: "New",
-          "Booked At": bookedAt,
-        },
-      }),
-    });
-
-    if (!createRes.ok) {
-      const airtableError = await createRes.text();
-      return NextResponse.json({ error: `Airtable ${createRes.status}: ${airtableError}` }, { status: 502 });
-    }
-
-    const created = await createRes.json();
-    const recordId = created?.id as string | undefined;
-
     const bookingParams = new URLSearchParams({
       name,
       email,
@@ -212,21 +174,34 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: errorMessage }, { status: 502 });
     }
 
-    if (recordId) {
-      await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}/${recordId}`, {
-        method: "PATCH",
+    if (AIRTABLE_BASE_ID && AIRTABLE_API_KEY) {
+      const airtableRes = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`, {
+        method: "POST",
         headers: {
           Authorization: `Bearer ${AIRTABLE_API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           fields: {
+            Name: name,
+            "Work Email": email,
+            "Business Type": businessType,
+            Bottleneck: bottleneck,
+            "Demo Focus": focus || null,
+            "Priority Workflow": bottleneck,
+            "Current Tools": tools.length ? tools : null,
+            Urgency: urgency || null,
+            "Decision Makers": attendees || null,
+            "Success Criteria": successCriteria || null,
+            "Additional Notes": notesWithOtherTool || null,
+            Source: source,
             Status: "Booked",
             "Booking Link": bookingData?.eventId ? `calendar-event:${bookingData.eventId}` : null,
             "Booked At": bookedAt,
           },
         }),
       });
+      if (!airtableRes.ok) console.error("Demo booking Airtable error:", await airtableRes.text());
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;
@@ -281,7 +256,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    if (recordId && bookingData?.eventId) {
+    if (bookingData?.eventId) {
       console.log(`Booked demo ${titleCase(name)} -> ${bookingData.eventId}`);
     }
 
