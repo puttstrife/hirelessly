@@ -56,7 +56,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" style={{ fontSize: "1.1875rem", fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em", fontFamily: "Barlow Condensed, sans-serif", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8 }}>
               <span aria-hidden style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--horizon)", display: "inline-block" }} />
-              Hire<span style={{ color: "var(--cobalt-ink)" }}>lessly</span>
+              Hirelessly
             </Link>
 
             {/* Desktop Nav */}

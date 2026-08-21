@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em", fontFamily: "Barlow Condensed, sans-serif", textDecoration: "none" }}>
-              Hire<span style={{ color: "var(--cobalt-ink)" }}>lessly</span>
+              Hirelessly
             </Link>
             <p style={{ fontSize: "0.875rem", color: "var(--ink-muted)", lineHeight: 1.7, marginTop: 12, maxWidth: 280 }}>
               AI systems that run your business operations 24/7 — without manual bottlenecks.

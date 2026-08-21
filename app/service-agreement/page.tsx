@@ -33,7 +33,7 @@ export default function ServiceAgreement() {
       <div style={{ background: "linear-gradient(135deg, #1A1B2E 0%, #252742 100%)", padding: "72px 20px", marginTop: 60 }}>
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#8B8FFF", letterSpacing: "-0.02em", marginBottom: 48, fontFamily: "Roboto Condensed, sans-serif" }}>
-            Hire<span style={{ color: "#fff" }}>lessly</span>
+            Hirelessly
           </div>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 12, fontFamily: "Roboto Condensed, sans-serif" }}>
             Master Service Agreement
