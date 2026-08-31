@@ -35,12 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    {
-      url: `${BASE_URL}/service-agreement`,
-      lastModified: new Date("2026-03-17"),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
   ];
 
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
